@@ -18,16 +18,16 @@ function onInput(e) {
 
     getCountries(inputValue)
         .then((fields) => {
-            if (fields.length > 10) {
+            if (fields.length === 1) { const markup = fields.reduce((markup, field) => markup + createMarkupInfo(field), "");
+                updateNewsInfo(markup);
+                countryList.innerHTML = ''
+            } else if (fields.length > 10) {
                 Notify.info("Too many matches found. Please enter a more specific name.")
-            } else if (fields.length >= 2) {
+            } else {
                 const markup = fields.reduce((markup, field) => markup + createMarkupList(field), "");
                 updateNewsList(markup);
                 countryInfo.innerHTML = ''
-            } else if (fields.length === 1) { const markup = fields.reduce((markup, field) => markup + createMarkupInfo(field), "");
-                updateNewsInfo(markup);
-                countryList.innerHTML = ''
-            } else {Notify.failure("Oops, there is no country with that name");}
+            }
             }).catch(onError)
 }
 
