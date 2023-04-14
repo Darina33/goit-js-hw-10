@@ -46,7 +46,7 @@ function createMarkupInfo({ name, capital, population, flags, languages }) {
      <h2 class="country-name">${name.official}</h2></div>
      <h3 class="country-capital">Capital: ${capital}</h3>
      <p class="country-population">Population: ${population}</p>
-     <p class="country-language">Languages: ${Object.values(languages)}</p>
+     <p class="country-language">Languages: ${Object.values(languages).join(', ')}</p>
      </div>`
 }
 
